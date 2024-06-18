@@ -25,7 +25,7 @@ class getResults {
     static List<driver> rankAll() {
 
         System.out.println(allDrivers.size() + " drivers:" + allDrivers);
-        for(int year = 1950; year <= 2023; year++) {
+        for(int year = 1950; year <= 2024; year++) {
             int rounds = 0;
 
             try {
@@ -46,7 +46,9 @@ class getResults {
 
                     String res = response1.toString();
                     int startInd = res.indexOf("total=");
-                    if(res.charAt(startInd+8) != '"') {
+                    if(year == 2024) {
+                        rounds = 9;
+                    } else if(res.charAt(startInd+8) != '"') {
                         rounds = Integer.parseInt(res.substring(startInd+7, startInd+9));
                     } else {
                         rounds = Integer.parseInt(res.substring(startInd+7, startInd+8));
@@ -117,7 +119,7 @@ class getResults {
 
                             for (Map.Entry<String, List<driver>> entry : constructorMap.entrySet()) {
                                 List<driver> drivers1 = entry.getValue();
-                                elo.calculateGlicko(drivers1);
+                                elo.calculateElo(drivers1);
                             }
 
                         } catch(Exception e) {
