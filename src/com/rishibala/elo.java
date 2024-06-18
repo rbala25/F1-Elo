@@ -13,21 +13,24 @@ class elo {
 
     public static void main(String[] args) {
         // examples
-        double driverA = 1500;
-        double driverB = 1542;
+//        double driverA = 1500;
+//        double driverB = 1542;
+//
+//        double expectedScoreA = expectedScore(driverA, driverB);
+//        double expectedScoreB = expectedScore(driverB, driverA);
+//
+//
+//        double actualScoreA = 1; //A beats B
+//        double actualScoreB = 0;
+//
+//        driverA = updateRating(driverA, expectedScoreA, actualScoreA);
+//        driverB = updateRating(driverB, expectedScoreB, actualScoreB);
+//
+//        System.out.println("New rating for Driver A: " + driverA);
+//        System.out.println("New rating for Driver B: " + driverB);
 
-        double expectedScoreA = expectedScore(driverA, driverB);
-        double expectedScoreB = expectedScore(driverB, driverA);
 
 
-        double actualScoreA = 1; //A beats B
-        double actualScoreB = 0;
-
-        driverA = updateRating(driverA, expectedScoreA, actualScoreA);
-        driverB = updateRating(driverB, expectedScoreB, actualScoreB);
-
-        System.out.println("New rating for Driver A: " + driverA);
-        System.out.println("New rating for Driver B: " + driverB);
     }
 }
 
