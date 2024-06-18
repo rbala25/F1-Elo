@@ -23,6 +23,8 @@ class getResults {
     private static List<driver> allDrivers = getDrivers.getDrivers();
 
     static List<driver> rankAll() {
+
+        System.out.println(allDrivers.size() + " drivers:" + allDrivers);
         for(int year = 1950; year <= 2023; year++) {
             int rounds = 0;
 
@@ -91,13 +93,13 @@ class getResults {
                                     Element constructorElement = (Element) resultElement.getElementsByTagName("Constructor").item(0);
                                     String constructor = constructorElement.getElementsByTagName("Name").item(0).getTextContent();
 
-//                                    if (!allDrivers.contains(new driver(givenName, familyName, 1000))) {
-//                                        System.out.println(givenName + " " + familyName);
-//                                        System.out.println(allDrivers);
-//                                        System.out.println();
-//                                    }
+                                    if (!allDrivers.contains(new driver(givenName, familyName))) {
+                                        System.out.println("Could not find " + givenName + " " + familyName);
+                                        System.out.println(allDrivers);
+                                        System.out.println();
+                                    }
 
-                                    drivers.add(allDrivers.get(allDrivers.indexOf(new driver(givenName, familyName, 1000))));
+                                    drivers.add(allDrivers.get(allDrivers.indexOf(new driver(givenName, familyName))));
                                     constructors.add(constructor);
                                 }
                             }
@@ -115,7 +117,7 @@ class getResults {
 
                             for (Map.Entry<String, List<driver>> entry : constructorMap.entrySet()) {
                                 List<driver> drivers1 = entry.getValue();
-                                elo.calculateElo(drivers1);
+                                elo.calculateGlicko(drivers1);
                             }
 
                         } catch(Exception e) {

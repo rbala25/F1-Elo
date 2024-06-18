@@ -21,7 +21,7 @@ class getDrivers {
         for (int j=1950; j<=2023; j++) {
             System.out.println("Getting drivers for year " + j);
             try {
-                URL obj = new URL("http://ergast.com/api/f1/" + j + "/drivers");
+                URL obj = new URL("http://ergast.com/api/f1/" + j + "/drivers?limit=400");
                 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
                 con.setRequestMethod("GET");
 
@@ -58,9 +58,7 @@ class getDrivers {
                                 String givenName = element.getElementsByTagName("GivenName").item(0).getTextContent();
                                 String familyName = element.getElementsByTagName("FamilyName").item(0).getTextContent();
 
-                                //check if driver is alr there
-
-                                driver driver = new driver(givenName, familyName, 1000);
+                                driver driver = new driver(givenName, familyName);
                                 if(allDrivers.contains(driver)) {
                                     continue;
                                 } else {

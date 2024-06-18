@@ -19,9 +19,12 @@ public class Main {
 
         System.out.println();
         System.out.println();
-        System.out.println("Rankings: ");
+        System.out.println("Formula 1 Rankings using the Glicko Rating System (1950-2023): ");
+
+        int counter = 1;
         for(driver driver : driversList) {
-            System.out.println(driver);
+            System.out.println(counter + ". " + driver + " ELO");
+            counter++;
         }
 
     }
