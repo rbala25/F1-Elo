@@ -59,7 +59,11 @@ class getDrivers {
                                 //check if driver is alr there
 
                                 driver driver = new driver(givenName, familyName);
-                                allDrivers.put(driver, 1000.0);
+                                if(allDrivers.containsKey(driver)) {
+                                    continue;
+                                } else {
+                                    allDrivers.put(driver, 1000.0);
+                                }
                             }
                         }
                     } catch (Exception e) {
