@@ -3,10 +3,12 @@ package com.rishibala;
 public class driver {
     private final String firstName;
     private final String lastName;
+    private double elo;
 
-    public driver(String firstName, String lastName) {
+    public driver(String firstName, String lastName, double elo) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.elo = elo;
     }
 
     public String getFirstName() {
@@ -19,12 +21,20 @@ public class driver {
 
     @Override
     public String toString() {
-        return "Driver: " + firstName + " " + lastName;
+        return firstName + " " + lastName + ": " + elo;
+    }
+
+    public double getElo() {
+        return elo;
     }
 
     @Override
     public int hashCode() {
         return firstName.hashCode()+lastName.hashCode();
+    }
+
+    public void setElo(double elo) {
+        this.elo = elo;
     }
 
     @Override

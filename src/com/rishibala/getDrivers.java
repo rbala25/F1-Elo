@@ -10,14 +10,16 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 
 class getDrivers {
-    private HashMap<driver, Double> allDrivers = new HashMap<>();
+    private static List<driver> allDrivers = new ArrayList<>();
 
-    public void getDrivers() {
+    static List<driver> getDrivers() {
 
         for (int j=1950; j<=2023; j++) {
+            System.out.println("Getting drivers for year " + j);
             try {
                 URL obj = new URL("http://ergast.com/api/f1/" + j + "/drivers");
                 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -58,18 +60,17 @@ class getDrivers {
 
                                 //check if driver is alr there
 
-                                driver driver = new driver(givenName, familyName);
-                                if(allDrivers.containsKey(driver)) {
+                                driver driver = new driver(givenName, familyName, 1000);
+                                if(allDrivers.contains(driver)) {
                                     continue;
                                 } else {
-                                    allDrivers.put(driver, 1000.0);
+                                    allDrivers.add(driver);
                                 }
                             }
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-
                 } else {
                     throw new RuntimeException("GET request failed: " + responseCode);
                 }
@@ -78,9 +79,10 @@ class getDrivers {
                 System.out.println(e);
             }
         }
+        return allDrivers;
     }
 
-    public HashMap<driver, Double> getAllDrivers() {
+    public static List<driver> getAllDrivers() {
         return allDrivers;
     }
 }
