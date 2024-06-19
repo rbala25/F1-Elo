@@ -77,6 +77,13 @@ class getResults {
                             Document doc = builder.parse(new InputSource(new StringReader(response.toString())));
                             doc.getDocumentElement().normalize();
 
+                            NodeList raceNodes = doc.getElementsByTagName("Race");
+                            String raceName = "";
+                            if (raceNodes.getLength() > 0) {
+                                Element raceElement = (Element) raceNodes.item(0);
+                                raceName = raceElement.getElementsByTagName("RaceName").item(0).getTextContent();
+                            }
+
                             NodeList resultNodes = doc.getElementsByTagName("Result");
 
                             List<driver> drivers = new ArrayList<>();
@@ -125,6 +132,9 @@ class getResults {
                                 for(driver drive : drivers) {
                                     if(drive.getElo() > drive.getHighestElo()) {
                                         drive.setHighestElo(drive.getElo());
+                                        drive.setHighestEloRound(j);
+                                        drive.setHighestEloYear(year);
+                                        drive.setHighestEloRace(raceName);
                                     }
                                 }
 

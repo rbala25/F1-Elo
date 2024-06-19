@@ -23,7 +23,7 @@ public class Main {
 
         int counter = 1;
         for(driver driver : driversList) {
-            System.out.println(counter + ". " + driver + " ELO");
+            System.out.println(counter + ". " + driver);
             counter++;
         }
 
@@ -41,7 +41,7 @@ public class Main {
 
         int counter1 = 1;
         for(driver driver : driversList) {
-            System.out.println(counter1 + ". " + driver + " ELO");
+            System.out.println(counter1 + ". " + driver.toHighestEloString());
             counter1++;
         }
 
