@@ -22,10 +22,14 @@ public class Main {
         System.out.println();
         System.out.println();
         System.out.println("Formula 1 Rankings by Highest Achieved ELO (1950-2024): ");
-        System.out.println("**Minimum 10 Races**");
+        System.out.println("**Minimum 3 Races**");
 
         int counter1 = 1;
         for(driver driver : driversList) {
+            if(driver.getCountedRaces() < 3) {
+                continue;
+            }
+
             System.out.println(counter1 + ". " + driver.toHighestEloString());
             counter1++;
         }

@@ -138,11 +138,11 @@ class getResults {
                                 for(driver drive : drivers1) {
                                     drive.increaseCountedRaces();
 
-                                    if(drive.getCountedRaces() < 10) {
+                                    if(drive.getCountedRaces() < 3) {
                                         continue;
                                     }
 
-                                    if((drive.getElo() > drive.getHighestElo()) || (drive.getCountedRaces() == 10)) {
+                                    if((drive.getElo() > drive.getHighestElo()) || (drive.getCountedRaces() == 3)) {
                                         drive.setHighestElo(drive.getElo());
 //                                        if(drive.getCountedRaces() == 10) {
 //                                            System.out.println(drive + " " + drive.getCountedRaces());
