@@ -5,31 +5,37 @@ public class driver {
     private final String lastName;
     private double elo;
 
-    public double getRatingDeviation() {
-        return ratingDeviation;
-    }
-
-    public void setRatingDeviation(double ratingDeviation) {
-        this.ratingDeviation = ratingDeviation;
-    }
-
-    public double getVolatility() {
-        return volatility;
-    }
-
-    public void setVolatility(double volatility) {
-        this.volatility = volatility;
-    }
-
-    private double ratingDeviation;
-    private double volatility;
+//    public double getRatingDeviation() {
+//        return ratingDeviation;
+//    }
+//
+//    public void setRatingDeviation(double ratingDeviation) {
+//        this.ratingDeviation = ratingDeviation;
+//    }
+//
+//    public double getVolatility() {
+//        return volatility;
+//    }
+//
+//    public void setVolatility(double volatility) {
+//        this.volatility = volatility;
+//    }
+//
+//    private double ratingDeviation;
+//    private double volatility;
 
     public driver(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
         elo = 1500.0;
-        ratingDeviation = 350.0;
-        volatility = 0.06;
+//        ratingDeviation = 350.0;
+//        volatility = 0.06;
+    }
+
+    public driver(String firstName, String lastName, double elo) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.elo = elo;
     }
 
     public String getFirstName() {

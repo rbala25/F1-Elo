@@ -25,7 +25,7 @@ class getResults {
     static List<driver> rankAll() {
 
         System.out.println(allDrivers.size() + " drivers:" + allDrivers);
-        for(int year = 1950; year <= 2024; year++) {
+        for(int year = 1950; year <= 1955; year++) {
             int rounds = 0;
 
             try {

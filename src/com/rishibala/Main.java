@@ -19,7 +19,7 @@ public class Main {
 
         System.out.println();
         System.out.println();
-        System.out.println("Formula 1 Rankings by ELO (1950-2023): ");
+        System.out.println("Formula 1 Rankings by ELO (1950-2024): ");
 
         int counter = 1;
         for(driver driver : driversList) {

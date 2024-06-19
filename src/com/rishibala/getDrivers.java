@@ -18,7 +18,7 @@ class getDrivers {
 
     static List<driver> getDrivers() {
 
-        for (int j=1950; j<=2024; j++) {
+        for (int j=1950; j<=1955; j++) {
             System.out.println("Getting drivers for year " + j);
             try {
                 URL obj = new URL("http://ergast.com/api/f1/" + j + "/drivers?limit=400");
