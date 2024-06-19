@@ -4,6 +4,7 @@ public class driver {
     private final String firstName;
     private final String lastName;
     private double elo;
+    private double highestElo;
 
 //    public double getRatingDeviation() {
 //        return ratingDeviation;
@@ -24,10 +25,19 @@ public class driver {
 //    private double ratingDeviation;
 //    private double volatility;
 
+    public double getHighestElo() {
+        return highestElo;
+    }
+
+    public void setHighestElo(double highestElo) {
+        this.highestElo = highestElo;
+    }
+
     public driver(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
         elo = 1500.0;
+        highestElo = Double.MIN_VALUE;
 //        ratingDeviation = 350.0;
 //        volatility = 0.06;
     }
@@ -36,6 +46,7 @@ public class driver {
         this.firstName = firstName;
         this.lastName = lastName;
         this.elo = elo;
+        highestElo = Double.MIN_VALUE;
     }
 
     public String getFirstName() {

@@ -12,20 +12,39 @@ public class Main {
         driversList.sort(new Comparator<driver>() {
             @Override
             public int compare(driver d1, driver d2) {
-                // Sort in descending order based on Elo rating
+                //descending order
                 return Double.compare(d2.getElo(), d1.getElo());
             }
         });
 
         System.out.println();
         System.out.println();
-        System.out.println("Formula 1 Rankings by ELO (1950-2024): ");
+        System.out.println("Formula 1 Rankings by Final ELO (1950-2024): ");
 
         int counter = 1;
         for(driver driver : driversList) {
             System.out.println(counter + ". " + driver + " ELO");
             counter++;
         }
+
+        driversList.sort(new Comparator<driver>() {
+            @Override
+            public int compare(driver d1, driver d2) {
+                //descending order
+                return Double.compare(d2.getHighestElo(), d1.getHighestElo());
+            }
+        });
+
+        System.out.println();
+        System.out.println();
+        System.out.println("Formula 1 Rankings by Highest Achieved ELO (1950-2024): ");
+
+        int counter1 = 1;
+        for(driver driver : driversList) {
+            System.out.println(counter1 + ". " + driver + " ELO");
+            counter1++;
+        }
+
 
     }
 }

@@ -121,6 +121,13 @@ class getResults {
                                 List<driver> drivers1 = entry.getValue();
 
                                 elo.calculateElo(drivers1);
+
+                                for(driver drive : drivers) {
+                                    if(drive.getElo() > drive.getHighestElo()) {
+                                        drive.setHighestElo(drive.getElo());
+                                    }
+                                }
+
                             }
 
                         } catch(Exception e) {
