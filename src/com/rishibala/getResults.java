@@ -8,10 +8,7 @@ import org.xml.sax.InputSource;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.StringReader;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.*;
@@ -138,7 +135,7 @@ class getResults {
 
                                 elo.calculateElo(drivers1);
 
-                                for(driver drive : drivers) {
+                                for(driver drive : drivers1) {
                                     drive.increaseCountedRaces();
 
                                     if(drive.getCountedRaces() < 10) {
@@ -147,6 +144,11 @@ class getResults {
 
                                     if((drive.getElo() > drive.getHighestElo()) || (drive.getCountedRaces() == 10)) {
                                         drive.setHighestElo(drive.getElo());
+//                                        if(drive.getCountedRaces() == 10) {
+//                                            System.out.println(drive + " " + drive.getCountedRaces());
+//                                            System.out.println(year + " " + j);
+//                                        }
+
                                         drive.setHighestEloRound(j);
                                         drive.setHighestEloYear(year);
                                         drive.setHighestEloRace(raceName);

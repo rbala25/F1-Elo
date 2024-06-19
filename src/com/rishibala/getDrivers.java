@@ -80,7 +80,7 @@ class getDrivers {
         return allDrivers;
     }
 
-    public static List<driver> getAllDrivers() {
-        return allDrivers;
-    }
+//    public static List<driver> getAllDrivers() {
+//        return allDrivers;
+//    }
 }
