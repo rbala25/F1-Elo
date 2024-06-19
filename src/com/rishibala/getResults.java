@@ -14,13 +14,13 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 class getResults {
-    private static List<driver> allDrivers = getDrivers.getDrivers();
+
+    public static List<Integer> acceptableDNFStatus = new ArrayList<>(Arrays.asList(2, 5, 6, 7, 8, 9, 10, 21, 23, 24, 25, 26, 28, 30, 27, 29));
+
+    private static final List<driver> allDrivers = getDrivers.getDrivers();
 
     static List<driver> rankAll() {
 
@@ -88,6 +88,7 @@ class getResults {
 
                             List<driver> drivers = new ArrayList<>();
                             List<String> constructors = new ArrayList<>();
+                            List<Integer> statusIds = new ArrayList<>();
 
                             for (int i = 0; i < resultNodes.getLength(); i++) {
                                 Node resultNode = resultNodes.item(i);
@@ -102,6 +103,8 @@ class getResults {
                                     Element constructorElement = (Element) resultElement.getElementsByTagName("Constructor").item(0);
                                     String constructor = constructorElement.getElementsByTagName("Name").item(0).getTextContent();
 
+                                    int statusId = Integer.parseInt(resultElement.getElementsByTagName("Status").item(0).getAttributes().getNamedItem("statusId").getTextContent());
+
                                     if (!allDrivers.contains(new driver(givenName, familyName))) {
                                         System.out.println("Could not find " + givenName + " " + familyName);
                                         System.out.println(allDrivers);
@@ -110,6 +113,7 @@ class getResults {
 
                                     drivers.add(allDrivers.get(allDrivers.indexOf(new driver(givenName, familyName))));
                                     constructors.add(constructor);
+                                    statusIds.add(statusId);
                                 }
                             }
 
@@ -118,6 +122,11 @@ class getResults {
                             for (int i = 0; i < drivers.size(); i++) {
                                 driver driver = drivers.get(i);
                                 String constructor = constructors.get(i);
+                                int status = statusIds.get(i);
+                                if(acceptableDNFStatus.contains(status)) {
+                                    continue;
+                                }
+
                                 if (!constructorMap.containsKey(constructor)) {
                                     constructorMap.put(constructor, new ArrayList<>());
                                 }
