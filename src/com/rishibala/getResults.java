@@ -139,7 +139,13 @@ class getResults {
                                 elo.calculateElo(drivers1);
 
                                 for(driver drive : drivers) {
-                                    if(drive.getElo() > drive.getHighestElo()) {
+                                    drive.increaseCountedRaces();
+
+                                    if(drive.getCountedRaces() < 10) {
+                                        continue;
+                                    }
+
+                                    if((drive.getElo() > drive.getHighestElo()) || (drive.getCountedRaces() == 10)) {
                                         drive.setHighestElo(drive.getElo());
                                         drive.setHighestEloRound(j);
                                         drive.setHighestEloYear(year);

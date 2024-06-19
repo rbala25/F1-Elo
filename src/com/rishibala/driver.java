@@ -8,6 +8,7 @@ public class driver {
     private int highestEloYear;
     private int highestEloRound;
     private String highestEloRace;
+    private int countedRaces;
 
 //    public double getRatingDeviation() {
 //        return ratingDeviation;
@@ -52,6 +53,7 @@ public class driver {
         highestEloYear = 0;
         highestEloRound = 0;
         highestEloRace = "";
+        countedRaces = 0;
 //        ratingDeviation = 350.0;
 //        volatility = 0.06;
     }
@@ -79,6 +81,7 @@ public class driver {
         highestElo = Double.MIN_VALUE;
         highestEloYear = 0;
         highestEloRound = 0;
+        countedRaces = 0;
     }
 
     public String getFirstName() {
@@ -120,5 +123,13 @@ public class driver {
 
     public String toHighestEloString() {
         return firstName + " " + lastName + ": " + highestElo + " ELO achieved in the " + highestEloYear + " " + highestEloRace + " (Round " + highestEloRound + ")";
+    }
+
+    public void increaseCountedRaces() {
+        countedRaces++;
+    }
+
+    public int getCountedRaces() {
+        return countedRaces;
     }
 }

@@ -38,6 +38,7 @@ public class Main {
         System.out.println();
         System.out.println();
         System.out.println("Formula 1 Rankings by Highest Achieved ELO (1950-2024): ");
+        System.out.println("**minimum 10 races**");
 
         int counter1 = 1;
         for(driver driver : driversList) {
