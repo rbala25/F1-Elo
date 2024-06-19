@@ -25,7 +25,7 @@ class getResults {
     static List<driver> rankAll() {
 
         System.out.println(allDrivers.size() + " drivers:" + allDrivers);
-        for(int year = 1950; year <= 1955; year++) {
+        for(int year = 1950; year <= 2024; year++) {
             int rounds = 0;
 
             try {
@@ -119,11 +119,12 @@ class getResults {
 
                             for (Map.Entry<String, List<driver>> entry : constructorMap.entrySet()) {
                                 List<driver> drivers1 = entry.getValue();
+
                                 elo.calculateElo(drivers1);
                             }
 
                         } catch(Exception e) {
-                            System.out.println(e);
+                            e.printStackTrace();
                         }
 
                     }

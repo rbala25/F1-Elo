@@ -106,7 +106,7 @@ class elo {
     //back in the day, teams sometimes had more than 2 drivers
     //you beat everyone on your team who finished behind you and lose to everyone ahead
     public static void calculateElo(List<driver> drivers) {
-            driver currentDriver = drivers.get(1);
+            driver currentDriver = drivers.get(0);
             double x = currentDriver.getElo();
 
             driver highestOpp = new driver("SAMPLE", "SAMPLE", Double.MIN_VALUE);
