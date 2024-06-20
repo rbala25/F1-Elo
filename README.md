@@ -13,7 +13,7 @@
 
 <p align="center"><image src="https://miro.medium.com/v2/resize:fit:630/1*XIMUAMhRgbS983WfEHRQQQ.png"></image></p>
 <br>
-<p>The new rating for a player is calculated by a formula shown in the image below. Notably, _K_, the K-factor, is set to 32 in this elo engine.</p>
+<p>The new rating for a player is calculated by a formula shown in the image below. Notably, <em>K</em>, the K-factor, is set to 32 in this elo engine.</p>
 <p align="center"><image src="https://miro.medium.com/v2/resize:fit:1400/1*-zLVvrHp5qTD0nhgPRy-Mw.png"></image></p>
 
 
