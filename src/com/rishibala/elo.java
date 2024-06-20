@@ -2,7 +2,7 @@ package com.rishibala;
 
 import java.util.List;
 
-class elo {
+class Elo {
 
 //    private static final double TAU = 0.5;
 //    private static final double GLICKO_SCALE = 173.7178;
@@ -105,25 +105,17 @@ class elo {
 
     //back in the day, teams sometimes had more than 2 drivers
     //you beat everyone on your team who finished behind you and lose to everyone ahead
-    public static void calculateElo(List<driver> drivers) {
-            driver currentDriver = drivers.get(0);
+    public static void calculateElo(List<Driver> drivers) {
+            Driver currentDriver = drivers.get(0);
             double x = currentDriver.getElo();
 
-            driver highestOpp = new driver("SAMPLE", "SAMPLE", Double.MIN_VALUE);
+            Driver highestOpp = new Driver("SAMPLE", "SAMPLE", Double.MIN_VALUE);
 
             if(drivers.size() == 2) {
-                driver opponent = drivers.get(1);
-                double expectedScoreCurrent = 1.0 / (1 + Math.pow(10, (opponent.getElo() - currentDriver.getElo()) / 400.0));
-                double expectedScoreOpponent = 1 - expectedScoreCurrent;
-                double actualScoreCurrent = 1;
-                double actualScoreOpponent = 0;
-                double newRatingCurrent = currentDriver.getElo() + K * (actualScoreCurrent - expectedScoreCurrent);
-                double newRatingOpponent = opponent.getElo() + K * (actualScoreOpponent - expectedScoreOpponent);
 
-                currentDriver.setElo(newRatingCurrent);
-                opponent.setElo(newRatingOpponent);
-
+                twoDrivers(currentDriver, drivers);
                 return;
+
             } else if (drivers.size() == 1) {
                 return;
             }
@@ -145,14 +137,7 @@ class elo {
             currentDriver.setElo(newRatingCurrent);
             highestOpp.setElo(newRatingOpponent);
 
-            for (driver opponent : drivers) {
-                double expectedScoreCurrent1 = 1.0 / (1 + Math.pow(10, (opponent.getElo() - currentDriver.getElo()) / 400.0));
-                double expectedScoreOpponent1 = 1 - expectedScoreCurrent1;
-
-                double actualScoreOpponent1 = 0;
-                double newRatingOpponent1 = opponent.getElo() + K * (actualScoreOpponent1 - expectedScoreOpponent1);
-                opponent.setElo(newRatingOpponent1);
-            }
+            changeOpponents(drivers, currentDriver);
 
             if((newRatingCurrent - x) > 32) {
                 System.out.println(currentDriver);
@@ -205,12 +190,36 @@ class elo {
 //            }
     }
 
+    private static void twoDrivers(Driver currentDriver, List<Driver> drivers) {
+        Driver opponent = drivers.get(1);
+        double expectedScoreCurrent = 1.0 / (1 + Math.pow(10, (opponent.getElo() - currentDriver.getElo()) / 400.0));
+        double expectedScoreOpponent = 1 - expectedScoreCurrent;
+        double actualScoreCurrent = 1;
+        double actualScoreOpponent = 0;
+        double newRatingCurrent = currentDriver.getElo() + K * (actualScoreCurrent - expectedScoreCurrent);
+        double newRatingOpponent = opponent.getElo() + K * (actualScoreOpponent - expectedScoreOpponent);
+
+        currentDriver.setElo(newRatingCurrent);
+        opponent.setElo(newRatingOpponent);
+    }
+
+    private static void changeOpponents(List<Driver> drivers, Driver currentDriver) {
+        for (Driver opponent : drivers) {
+            double expectedScoreCurrent1 = 1.0 / (1 + Math.pow(10, (opponent.getElo() - currentDriver.getElo()) / 400.0));
+            double expectedScoreOpponent1 = 1 - expectedScoreCurrent1;
+
+            double actualScoreOpponent1 = 0;
+            double newRatingOpponent1 = opponent.getElo() + K * (actualScoreOpponent1 - expectedScoreOpponent1);
+            opponent.setElo(newRatingOpponent1);
+        }
+    }
+
     //if you're not first, you're last
-    public static void calculateEloOld(List<driver> drivers) {
+    public static void calculateEloOld(List<Driver> drivers) {
         if(drivers.size() > 1) {
-            driver currentDriver = drivers.get(0);
+            Driver currentDriver = drivers.get(0);
             for (int j = 1; j < drivers.size(); j++) {
-                driver opponent = drivers.get(j);
+                Driver opponent = drivers.get(j);
                 double expectedScoreCurrent = 1.0 / (1 + Math.pow(10, (opponent.getElo() - currentDriver.getElo()) / 400.0));
                 double expectedScoreOpponent = 1 - expectedScoreCurrent;
 //                double actualScoreCurrent = (i == 0) ? 1.0 : 0.0;

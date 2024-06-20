@@ -13,10 +13,10 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-class getDrivers {
-    private static List<driver> allDrivers = new ArrayList<>();
+class GetDrivers {
+    private static final List<Driver> allDrivers = new ArrayList<>();
 
-    static List<driver> getDrivers() {
+    static List<Driver> getAllDrivers() {
 
         for (int j=1950; j<=2024; j++) {
             System.out.println("Getting drivers for year " + j);
@@ -58,7 +58,7 @@ class getDrivers {
                                 String givenName = element.getElementsByTagName("GivenName").item(0).getTextContent();
                                 String familyName = element.getElementsByTagName("FamilyName").item(0).getTextContent();
 
-                                driver driver = new driver(givenName, familyName);
+                                Driver driver = new Driver(givenName, familyName);
                                 if(allDrivers.contains(driver)) {
                                     continue;
                                 } else {

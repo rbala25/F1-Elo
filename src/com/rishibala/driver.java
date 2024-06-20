@@ -1,6 +1,6 @@
 package com.rishibala;
 
-public class driver {
+public class Driver {
     private final String firstName;
     private final String lastName;
     private double elo;
@@ -45,7 +45,7 @@ public class driver {
         this.highestEloRace = highestEloRace;
     }
 
-    public driver(String firstName, String lastName) {
+    public Driver(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
         elo = 1500.0;
@@ -74,7 +74,7 @@ public class driver {
         this.highestEloRound = highestEloRound;
     }
 
-    public driver(String firstName, String lastName, double elo) {
+    public Driver(String firstName, String lastName, double elo) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.elo = elo;
@@ -112,7 +112,7 @@ public class driver {
 
     @Override
     public boolean equals(Object obj) {
-        driver dri = (driver)obj;
+        Driver dri = (Driver)obj;
 
         if ((dri.getFirstName().equals(firstName)) && (dri.getLastName().equals(lastName))) {
             return true;

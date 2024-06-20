@@ -7,13 +7,13 @@ public class Main {
     public static void main(String[] args) {
 //    HashMap<driver, Double> drivers = getDrivers.getDrivers();
 
-        List<driver> driversList = sortFinalOrder(getResults.rankAll());
+        List<Driver> driversList = sortFinalOrder(GetResults.rankAll());
         System.out.println();
         System.out.println();
         System.out.println("Formula 1 Rankings by Final ELO (1950-2024): ");
 
         int counter = 1;
-        for(driver driver : driversList) {
+        for(Driver driver : driversList) {
             System.out.println(counter + ". " + driver);
             counter++;
         }
@@ -25,7 +25,7 @@ public class Main {
         System.out.println("**Minimum 3 Races**");
 
         int counter1 = 1;
-        for(driver driver : driversList) {
+        for(Driver driver : driversList) {
             if(driver.getCountedRaces() < 3) {
                 continue;
             }
@@ -35,11 +35,11 @@ public class Main {
         }
     }
 
-    static List<driver> sortFinalOrder(List<driver> driversList) {
+    static List<Driver> sortFinalOrder(List<Driver> driversList) {
 
-        driversList.sort(new Comparator<driver>() {
+        driversList.sort(new Comparator<Driver>() {
             @Override
-            public int compare(driver d1, driver d2) {
+            public int compare(Driver d1, Driver d2) {
                 //descending order
                 return Double.compare(d2.getElo(), d1.getElo());
             }
@@ -48,10 +48,10 @@ public class Main {
         return driversList;
     }
 
-    static List<driver> sortHighestOrder(List<driver> driversList) {
-        driversList.sort(new Comparator<driver>() {
+    static List<Driver> sortHighestOrder(List<Driver> driversList) {
+        driversList.sort(new Comparator<Driver>() {
             @Override
-            public int compare(driver d1, driver d2) {
+            public int compare(Driver d1, Driver d2) {
                 //descending order
                 return Double.compare(d2.getHighestElo(), d1.getHighestElo());
             }
